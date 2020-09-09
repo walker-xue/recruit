@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.github.skunk</groupId>
+		<artifactId>skunk-lite</artifactId>
+		<version>1.0.0.RELEASE</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ncs.recruit</groupId>
+	<artifactId>recruit-build</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1.0-SNAPSHOT</version>
+	<name>Recruit Build</name>
+	<description>
+        恩士迅社会招聘人才系统
+    </description>
+
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.encoding>UTF-8</java.encoding>
+		<java.version>1.8</java.version>
+
+	</properties>
+
+	<modules>
+		<module>recruit-server</module>
+		<module>recruit-ui</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--Mail Tools -->
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+
+			<!-- NekoHTML 是一个简单地HTML扫描器和标签补偿器(tag balancer) ,使得程序能解析HTML文档并用标准的XML接口来访问其中的信息。 -->
+			<dependency>
+				<groupId>net.sourceforge.nekohtml</groupId>
+				<artifactId>nekohtml</artifactId>
+			</dependency>
+
+			<!-- offcie 利用openoffice+jodconvert-core-3.0-beta在线word转pdf加入jar -->
+			<dependency>
+				<groupId>com.github.livesense</groupId>
+				<artifactId>jodconverter-core</artifactId>
+				<version>1.0.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openoffice</groupId>
+				<artifactId>juh</artifactId>
+				<version>${openoffice.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openoffice</groupId>
+				<artifactId>jurt</artifactId>
+				<version>${openoffice.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openoffice</groupId>
+				<artifactId>ridl</artifactId>
+				<version>${openoffice.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openoffice</groupId>
+				<artifactId>unoil</artifactId>
+				<version>${openoffice.version}</version>
+			</dependency>
+			<!-- offcie -->
+
+			<!-- 是一个Java类库用于创建和操作基于Office Open XML(ECMA-376)与OPC规范的文档。 -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>openxml4j</artifactId>
+				<version>1.0-beta</version>
+			</dependency>
+
+			<!-- XStream是一个简单的基于Java库，Java对象序列化到XML -->
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.12</version>
+			</dependency>
+
+			<dependency>
+				<groupId>xml-apis</groupId>
+				<artifactId>xml-apis</artifactId>
+				<version>2.0.2</version>
+			</dependency>
+
+			<!-- commons -->
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+			<!-- POI -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-contrib</artifactId>
+				<version>3.6</version>
+			</dependency>
+
+
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.xiaoymin</groupId>
+				<artifactId>swagger-bootstrap-ui</artifactId>
+				<version>1.9.6</version>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${java.encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

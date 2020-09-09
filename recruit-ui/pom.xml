@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.ncs.recruit</groupId>
+        <artifactId>recruit-build</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>recruit-ui</artifactId>
+    <name>Recruit UI</name>
+    <packaging>jar</packaging>
+    <description>
+        招聘UI
+    </description>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>logback-spring.xml</include>
+                    <include>**/*.txt</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/templates</directory>
+                <filtering>false</filtering>
+                <targetPath>templates</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/resources/static</directory>
+                <filtering>false</filtering>
+                <targetPath>static</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- 打包前端资源 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <!--					<execution>-->
+                    <!--						<id>npm-install</id>-->
+                    <!--						<phase>validate</phase>-->
+                    <!--						<goals>-->
+                    <!--							<goal>exec</goal>-->
+                    <!--						</goals>-->
+                    <!--						<configuration>-->
+                    <!--							<executable>npm</executable>-->
+                    <!--							<arguments>-->
+                    <!--								<argument>install</argument>-->
+                    <!--							</arguments>-->
+                    <!--						</configuration>-->
+                    <!--					</execution>-->
+                    <execution>
+                        <id>npm-build</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                            </arguments>
+                            <environmentVariables>
+                                <PROJECT_VERSION>${project.version}</PROJECT_VERSION>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

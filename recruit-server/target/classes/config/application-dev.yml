@@ -1,0 +1,22 @@
+spring:
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false
+    datasource:
+        url: jdbc:mysql://172.168.0.130:3306/ito?characterEncoding=utf8&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: ito
+        password: Ito12345678@
+        driverClassName: com.mysql.cj.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        initialSize: 1
+        maxActive: 3
+        maxIdle: 2
+        hikari:
+            connectionTimeout: 10000
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true

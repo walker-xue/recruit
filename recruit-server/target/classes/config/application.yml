@@ -1,0 +1,47 @@
+server:
+    port: 8000
+    servlet:
+        context-path: /
+spring:
+    profiles:
+        active: dev
+    application:
+        name: Recruit Server
+        version: 0.1.0-SNAPSHOT
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+
+http:
+    maxTotal: 100
+    defaultMaxPerRoute: 20
+    connectTimeout: 1000
+    connectionRequestTimeout: 500
+    socketTimeout: 10000
+    staleConnectionCheckEnabled: true
+#mybatis
+mybatis:
+    type-aliases-package: com.ncs.recruit.context
+    type-handlers-package: com.ncs.recruit.context.handler
+    mapper-locations: classpath:com/ncs/recruit/mapper/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
+# mapper
+mapper:
+    not-empty: false
+    identity: MYSQL
+    safeDelete: true
+    safeUpdate: true
+    mappers: com.github.skunk.data.utils.BasisMapper
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    endpoint:
+        health:
+            show-details: ALWAYS
